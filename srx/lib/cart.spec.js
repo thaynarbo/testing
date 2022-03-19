@@ -59,6 +59,19 @@ describe('Cart', () => {
 
             expect(cart.getTotal().getAmount()).toEqual(45055);
         });
+
+        it('should return total with the discount applied', () => {
+            cart.add({
+                product,
+                quantity: 2,
+                condition: {
+                    percentage: 30,
+                    minimum: 2,
+                },
+            });
+
+            expect(cart.getTotal().getAmount()).toEqual(42105);
+        });
     });
 
     describe('checkout()', () => {
