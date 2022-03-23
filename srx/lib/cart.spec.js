@@ -72,6 +72,20 @@ describe('Cart', () => {
 
             expect(cart.getTotal().getAmount()).toEqual(42105);
         });
+
+        it('should apply discount base on quantity', () => {
+            const condition = {
+                quantity: 2,
+            };
+
+            cart.add({
+                product,
+                condition,
+                quantity: 4,
+            });
+
+            expect(cart.getTotal().getAmount()).toEqual(60150);
+        });
     });
 
     describe('checkout()', () => {
